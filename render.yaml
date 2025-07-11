@@ -3,7 +3,7 @@ services:
     name: my-stack-over-flow
     env: python
     buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
-    startCommand: "gunicorn stack_over_flow.wsgi"
+    startCommand: "gunicorn stack_over_flow.wsgi:application"
     envVars:
       - key: SECRET_KEY
         value: django-insecure-hz4rbw*^2h@$+-%v_!%$u^r^9)vngunla85weeh&t3bt!3ry3n
