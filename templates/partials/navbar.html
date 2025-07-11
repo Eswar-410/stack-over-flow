@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=4" />
+  </head>
+  <body>
+    <div class="nav-upper">
+      <img class="image-logo" src="{% static 'images/logo.svg' %}" />
+      <span class="heading">Stack <b>overflow</b></span>
+      <form method="POST">
+        <input
+          type="text"
+          name="global-search"
+          class="global-search"
+          placeholder="Search..."
+        />
+        <button class="button" type="submit">Search</button>
+      </form>
+      <div class="profile-identification">E</div>
+    </div>
+
+    <hr />
+
+    <div class="nav-left">
+      <nav class="nav">
+        <ul class="nav-section">
+          <li class="nav-items"><a href="#" class="nav-elements">Home</a></li>
+          <li class="nav-items">
+            <a href="#" class="nav-elements">Questions</a>
+          </li>
+          <li class="nav-items"><a href="#" class="nav-elements">Tags</a></li>
+          <li class="nav-items"><a href="#" class="nav-elements">Saves</a></li>
+          <li class="nav-items"><a href="#" class="nav-elements">Users</a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>
