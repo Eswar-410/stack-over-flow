@@ -1,0 +1,1281 @@
+[
+  {
+    "title": "How to merge two dictionaries in Python 3.9+?",
+    "body": "I have two dictionaries and I want to merge them into a single dictionary. I heard Python 3.9 introduced a simpler way. How does it work compared to older methods like update() or unpacking?",
+    "tags": ["python", "dictionary", "merge"],
+    "questioned_by": "codewizard88",
+    "no_of_votes": 124,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "You could also mention how update() mutates the original dict.",
+        "commented_by": "linus_dev"
+      },
+      "comment 2": {
+        "commented_message": "This is especially useful when merging configs!",
+        "commented_by": "script_guru"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "You can use the new merge operator in Python 3.9: dict3 = dict1 | dict2. It's much cleaner than using dict.update().",
+        "answered_by": "devpython",
+        "answer_votes": 97,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Works great, but what if there are overlapping keys?",
+            "commented_by": "sandy_dev"
+          },
+          "comment 2": {
+            "commented_message": "This only works in 3.9+, right?",
+            "commented_by": "jakebyte"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "What is the difference between Python's is and == operators?",
+    "body": "I often see both is and == used in Python code. I understand they’re both for comparisons, but I’m not clear on when to use which. Can someone clarify the exact difference between them?",
+    "tags": ["python", "operators", "comparison"],
+    "questioned_by": "py_guru23",
+    "no_of_votes": 189,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "This causes bugs for many newcomers, good question.",
+        "commented_by": "snakebyte"
+      },
+      "comment 2": {
+        "commented_message": "You should test it with integers and strings.",
+        "commented_by": "lazycoder"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "`==` checks for value equality, while `is` checks if two variables refer to the same object in memory. Use `is` when comparing with None, and `==` otherwise.",
+        "answered_by": "pyteacher",
+        "answer_votes": 121,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also worth noting that is can be True for small ints due to caching.",
+            "commented_by": "numtype"
+          },
+          "comment 2": {
+            "commented_message": "Thanks, I was confused by this exact issue!",
+            "commented_by": "datadev"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "Why is Java pass-by-value, not pass-by-reference?",
+    "body": "I keep hearing that Java is strictly pass-by-value, but I’ve seen behavior that looks like pass-by-reference when modifying objects inside methods. Can someone explain how Java passes variables to methods?",
+    "tags": ["java", "parameters", "pass-by-value"],
+    "questioned_by": "object_oriented88",
+    "no_of_votes": 143,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "You should test it with primitives vs objects.",
+        "commented_by": "bytebuffered"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "Java is always pass-by-value. When passing objects, the value passed is a reference to the object, not the object itself. So changes to the object affect the original, but reassigning the reference won’t.",
+        "answered_by": "javacoregenius",
+        "answer_votes": 101,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Most misunderstood Java fact!",
+            "commented_by": "methodcallman"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "How does event delegation work in JavaScript?",
+    "body": "I’m trying to understand event delegation in JavaScript. What is it, how does it work, and why is it useful for performance?",
+    "tags": ["javascript", "events", "delegation"],
+    "questioned_by": "dominator99",
+    "no_of_votes": 175,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "Very helpful when dynamically adding elements.",
+        "commented_by": "eventmaster"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "Event delegation allows you to add a single event listener on a parent element that listens to events from its child elements using event bubbling. This improves performance and avoids attaching multiple listeners.",
+        "answered_by": "js_hacker",
+        "answer_votes": 115,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Don’t forget about stopPropagation when needed.",
+            "commented_by": "clicktrap"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "What is the purpose of the key prop in React lists?",
+    "body": "I get a warning about missing 'key' props when rendering arrays in React. What is the key prop used for, and why is it necessary?",
+    "tags": ["react", "jsx", "keys"],
+    "questioned_by": "react_junkie",
+    "no_of_votes": 162,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "React reuses DOM nodes using keys, I think.",
+        "commented_by": "domreactor"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "The key prop helps React identify which items have changed, are added, or removed. It improves performance by giving a unique identity to each element in the list.",
+        "answered_by": "vdom_wizard",
+        "answer_votes": 126,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Always avoid using index as a key unless you have to.",
+            "commented_by": "fiberuser"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "What is the difference between WHERE and HAVING in SQL?",
+    "body": "I've seen both WHERE and HAVING used in SQL queries. What's the difference between them, and when should each be used?",
+    "tags": ["sql", "where", "having", "group-by"],
+    "questioned_by": "queryqueen",
+    "no_of_votes": 132,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "Good distinction! Especially confusing when aggregating.",
+        "commented_by": "dbinspector"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "WHERE filters rows before grouping, while HAVING filters groups after aggregation. Use WHERE for raw rows, and HAVING for conditions on aggregates like COUNT or SUM.",
+        "answered_by": "sqlexpert",
+        "answer_votes": 96,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Perfect example of pre and post filtering.",
+            "commented_by": "datascientist12"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "What is the difference between null and blank in Django models?",
+    "body": "I'm confused between null=True and blank=True in Django model fields. When should each be used, and do they impact the database or forms differently?",
+    "tags": ["django", "models", "null", "blank"],
+    "questioned_by": "djangonerd",
+    "no_of_votes": 118,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "null=True means the database can store NULL. blank=True means the form allows empty values. Use both if you want to allow missing values from user input and in DB.",
+        "answered_by": "django_core",
+        "answer_votes": 88,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Thanks, this saved me during migrations!",
+            "commented_by": "formbuilder23"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "Why is the time complexity of quicksort O(n log n) on average?",
+    "body": "I know quicksort is fast, but how exactly is its average case complexity calculated? What makes it better than other sorts like bubble sort?",
+    "tags": ["dsa", "algorithms", "quicksort"],
+    "questioned_by": "cs_undergrad",
+    "no_of_votes": 147,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "In average case, quicksort splits the array roughly in half at each step. Each split takes O(n), and there are log n levels of recursion, hence O(n log n).",
+        "answered_by": "algo_professor",
+        "answer_votes": 115,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Don’t forget that worst case is O(n^2) if pivot selection is poor.",
+            "commented_by": "asymptoticgeek"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is quantum superposition in simple terms?",
+    "body": "I'm new to quantum computing and often hear about superposition. Can someone explain what it really means without heavy math?",
+    "tags": ["quantum-computing", "physics", "beginner"],
+    "questioned_by": "quantum_newbie",
+    "no_of_votes": 200,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Superposition means a quantum bit can be in a combination of 0 and 1 at the same time until it's measured. It’s like spinning a coin that hasn’t landed yet.",
+        "answered_by": "q_physicist",
+        "answer_votes": 175,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Love the coin analogy, really helped!",
+            "commented_by": "schrodinger_dev"
+          }
+        }
+      }
+    }
+  },
+  {
+    "title": "How do I create a Bell state using Qiskit?",
+    "body": "I'm trying to implement a Bell state using Qiskit. What are the gates I should apply to get the entangled state?",
+    "tags": ["qiskit", "quantum-entanglement", "bell-state"],
+    "questioned_by": "qc_learner",
+    "no_of_votes": 98,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Use H gate on the first qubit followed by a CNOT gate with control=0 and target=1. This creates the Bell state (|00> + |11>)/√2.",
+        "answered_by": "quantumdev",
+        "answer_votes": 83,
+        "comments": {
+          "comment 1": {
+            "commented_message": "You can visualize it using Aer simulator too!",
+            "commented_by": "qviz_user"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How do you create entanglement in Cirq?",
+    "body": "I'm learning Cirq and want to know the best way to generate an entangled pair of qubits. Is it similar to Qiskit?",
+    "tags": ["cirq", "quantum-entanglement"],
+    "questioned_by": "cirq_learner",
+    "no_of_votes": 87,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Yes, apply Hadamard gate to the first qubit and then a CNOT gate with control on the first and target on the second. This entangles them similar to Qiskit.",
+        "answered_by": "quantum_nerd",
+        "answer_votes": 72,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Make sure to simulate with Cirq's simulator for verification.",
+            "commented_by": "qengineer"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between == and .equals() in Java?",
+    "body": "I often see == and .equals() used for comparisons in Java. What's the difference and when should I use each?",
+    "tags": ["java", "comparison", "equals", "reference"],
+    "questioned_by": "javacurious",
+    "no_of_votes": 143,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "== checks if both references point to the same object in memory, whereas .equals() checks if the values are logically equal.",
+        "answered_by": "javapro",
+        "answer_votes": 105,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also note that Strings override .equals().",
+            "commented_by": "str_comparer"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is event delegation in JavaScript?",
+    "body": "I've come across the term 'event delegation' while reading about DOM events in JS. Can someone explain what it means and when to use it?",
+    "tags": ["javascript", "dom", "events"],
+    "questioned_by": "frontend_dev",
+    "no_of_votes": 134,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Event delegation is a technique where a parent element handles events for its child elements. Useful for dynamically added elements.",
+        "answered_by": "js_ninja",
+        "answer_votes": 90,
+        "comments": {
+          "comment 1": {
+            "commented_message": "This improves performance when you have many children.",
+            "commented_by": "dominator"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between useEffect and useLayoutEffect?",
+    "body": "React has both useEffect and useLayoutEffect. When should I use one over the other?",
+    "tags": ["react", "hooks", "useeffect"],
+    "questioned_by": "react_geek",
+    "no_of_votes": 112,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "useEffect runs after the render is painted to the screen. useLayoutEffect runs before paint. Prefer useEffect unless you’re manipulating layout or animations.",
+        "answered_by": "hook_master",
+        "answer_votes": 94,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Using useLayoutEffect wrongly may block paint and hurt performance.",
+            "commented_by": "vdom_watcher"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is overfitting in machine learning and how to prevent it?",
+    "body": "I'm learning about machine learning models and came across overfitting. What exactly is it, and what techniques help prevent it?",
+    "tags": ["machine-learning", "ai", "overfitting"],
+    "questioned_by": "mlbeginner",
+    "no_of_votes": 158,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Overfitting is when a model learns noise instead of the actual pattern. Prevent with regularization, cross-validation, pruning (for trees), or using simpler models.",
+        "answered_by": "ml_guru",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Early stopping is also helpful!",
+            "commented_by": "cv_specialist"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between EC2 and Lambda in AWS?",
+    "body": "I'm trying to decide whether to deploy an app on EC2 or AWS Lambda. What’s the core difference and when should I use each?",
+    "tags": ["aws", "ec2", "lambda", "cloud"],
+    "questioned_by": "cloudrookie",
+    "no_of_votes": 141,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "EC2 provides virtual machines you manage. Lambda is serverless — you just upload code and AWS runs it on demand. Use Lambda for short tasks, EC2 for full control.",
+        "answered_by": "aws_architect",
+        "answer_votes": 122,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Great comparison. Pricing model differs significantly too.",
+            "commented_by": "infra_wiz"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is CI/CD and how does it improve software delivery?",
+    "body": "I keep hearing about CI/CD in DevOps conversations. What does it actually mean and why is it important for modern software development?",
+    "tags": ["devops", "ci", "cd", "automation"],
+    "questioned_by": "buildmaster",
+    "no_of_votes": 139,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "CI (Continuous Integration) means merging code frequently and testing automatically. CD (Continuous Delivery/Deployment) means code changes are automatically deployed. It speeds up delivery and reduces bugs.",
+        "answered_by": "devops_engineer",
+        "answer_votes": 110,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also enhances rollback and monitoring!",
+            "commented_by": "pipeline_ops"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the purpose of the transient keyword in Java?",
+    "body": "I've seen the transient keyword used with Java fields. What does it do and when should I use it?",
+    "tags": ["java", "serialization", "transient"],
+    "questioned_by": "javacrafter",
+    "no_of_votes": 109,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "The transient keyword prevents a field from being serialized. It is useful when a field contains sensitive or temporary data that shouldn't be saved.",
+        "answered_by": "oracledev",
+        "answer_votes": 88,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Important to remember for user passwords or session objects.",
+            "commented_by": "javasage"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What's the difference between let, const, and var in JavaScript?",
+    "body": "JavaScript has let, const, and var for variable declarations. When should I use each one, and how do they differ in scope or behavior?",
+    "tags": ["javascript", "variables", "scope"],
+    "questioned_by": "scriptkid",
+    "no_of_votes": 245,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "var is function-scoped, while let and const are block-scoped. const can't be reassigned. Prefer let/const for predictable behavior.",
+        "answered_by": "ecmascripter",
+        "answer_votes": 210,
+        "comments": {
+          "comment 1": {
+            "commented_message": "const doesn’t make objects immutable though!",
+            "commented_by": "frontendninja"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What are keys in React and why are they important?",
+    "body": "In React lists, I see the 'key' prop often used. Why is it needed and what happens if I don’t provide it?",
+    "tags": ["react", "keys", "jsx"],
+    "questioned_by": "uifever",
+    "no_of_votes": 154,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Keys help React identify which items changed, are added, or removed. Without keys, React’s diffing algorithm becomes inefficient or buggy.",
+        "answered_by": "reactwizard",
+        "answer_votes": 122,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Always use stable IDs, not index as key!",
+            "commented_by": "hookshero"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between supervised and unsupervised learning?",
+    "body": "I’m studying ML and came across these two categories: supervised and unsupervised learning. Can someone explain the difference with examples?",
+    "tags": [
+      "machine-learning",
+      "supervised-learning",
+      "unsupervised-learning"
+    ],
+    "questioned_by": "aimaster",
+    "no_of_votes": 184,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Supervised learning uses labeled data to train models (e.g., classification), while unsupervised learning uses unlabeled data to find patterns (e.g., clustering).",
+        "answered_by": "mlguru",
+        "answer_votes": 153,
+        "comments": {
+          "comment 1": {
+            "commented_message": "K-means vs SVM examples helped a lot!",
+            "commented_by": "deepthinker"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What’s the difference between continuous integration and continuous deployment?",
+    "body": "I'm new to DevOps and trying to understand CI/CD. How is continuous integration different from continuous deployment?",
+    "tags": ["devops", "ci-cd", "integration", "deployment"],
+    "questioned_by": "pipelineguy",
+    "no_of_votes": 141,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Continuous integration means regularly merging code and running tests. Continuous deployment means automatically releasing every successful build to production.",
+        "answered_by": "devopslead",
+        "answer_votes": 121,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Many teams stop at continuous delivery, not full deployment.",
+            "commented_by": "jenkinsops"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is a SQL injection and how to prevent it?",
+    "body": "I keep hearing that SQL injection is a big security risk. What exactly is it and how can I prevent it in my application?",
+    "tags": ["sql", "security", "injection"],
+    "questioned_by": "sqlawaredev",
+    "no_of_votes": 161,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "SQL injection happens when user inputs are improperly handled and directly inserted into SQL queries. Always use parameterized queries or ORM to prevent it.",
+        "answered_by": "securecoder",
+        "answer_votes": 138,
+        "comments": {
+          "comment 1": {
+            "commented_message": "ORMs like Django ORM or SQLAlchemy are really helpful here!",
+            "commented_by": "inputsanitizer"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between static and final in Java?",
+    "body": "Can someone explain the key differences between the static and final keywords in Java? When should I use them?",
+    "tags": ["java", "static", "final"],
+    "questioned_by": "javageek_7",
+    "no_of_votes": 117,
+    "question_comments": {
+      "comment 1": {
+        "commented_message": "Also worth mentioning static blocks and final variables.",
+        "commented_by": "deepcoder"
+      }
+    },
+    "answers": {
+      "answer 1": {
+        "answer": "static means the member belongs to the class. final makes the value unchangeable after initialization.",
+        "answered_by": "mentor_java",
+        "answer_votes": 102,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Perfect summary!",
+            "commented_by": "devchamp"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between BFS and DFS algorithms?",
+    "body": "I am trying to understand BFS and DFS traversal strategies. Can someone explain how they differ and when to use each?",
+    "tags": ["dsa", "algorithms", "bfs", "dfs"],
+    "questioned_by": "coder_dsa",
+    "no_of_votes": 195,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "BFS explores level by level using a queue; DFS dives deep using a stack. Use BFS for shortest paths.",
+        "answered_by": "datastruct_dev",
+        "answer_votes": 173,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Graph traversal basics, well covered!",
+            "commented_by": "graphhacker"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is Infrastructure as Code (IaC)?",
+    "body": "I often see Infrastructure as Code (IaC) mentioned in DevOps tutorials. What is it and what are its benefits?",
+    "tags": ["devops", "infrastructure", "terraform", "iac"],
+    "questioned_by": "opswizard",
+    "no_of_votes": 139,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "IaC is managing infrastructure through code rather than manual processes. Tools like Terraform or Ansible are commonly used.",
+        "answered_by": "cloudengineer",
+        "answer_votes": 120,
+        "comments": {
+          "comment 1": {
+            "commented_message": "IaC helps achieve repeatability and version control.",
+            "commented_by": "automationfan"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between a model form and a regular form in Django?",
+    "body": "I’m building a form for a model in Django and noticed both ModelForm and Form classes. Which should I use and when?",
+    "tags": ["django", "forms", "modelform"],
+    "questioned_by": "webdjango",
+    "no_of_votes": 145,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "ModelForm auto-generates form fields from a model. Use Form for custom forms not tied to models.",
+        "answered_by": "djangoninja",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "ModelForm saves so much time.",
+            "commented_by": "fastdev"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How does list comprehension differ from map() in Python?",
+    "body": "I’m confused between list comprehensions and using map(). When should I prefer one over the other?",
+    "tags": ["python", "map", "list-comprehension"],
+    "questioned_by": "pythonic_guy",
+    "no_of_votes": 174,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "List comprehensions are more Pythonic and readable. map() is faster for large datasets but less readable.",
+        "answered_by": "py_master",
+        "answer_votes": 159,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Good note about readability.",
+            "commented_by": "cleancode"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between INNER JOIN and LEFT JOIN?",
+    "body": "I understand both are used to join tables, but what is the exact difference between INNER and LEFT JOIN in SQL?",
+    "tags": ["sql", "joins", "database"],
+    "questioned_by": "dataquery",
+    "no_of_votes": 160,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "INNER JOIN returns only matching rows. LEFT JOIN returns all from the left table even if there's no match.",
+        "answered_by": "sqlguru",
+        "answer_votes": 144,
+        "comments": {
+          "comment 1": {
+            "commented_message": "LEFT JOIN is super useful for optional relationships.",
+            "commented_by": "relational_fan"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is superposition in quantum computing?",
+    "body": "I keep hearing the word 'superposition' in quantum computing. What does it actually mean in simple terms?",
+    "tags": ["quantum-computing", "superposition"],
+    "questioned_by": "qstarter",
+    "no_of_votes": 138,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Superposition allows a qubit to be in multiple states (0 and 1) simultaneously until measured.",
+        "answered_by": "quantum_phys",
+        "answer_votes": 126,
+        "comments": {
+          "comment 1": {
+            "commented_message": "This is the foundation of quantum speedup.",
+            "commented_by": "entanglethis"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the purpose of useEffect hook in React?",
+    "body": "Can someone explain how and why the useEffect hook is used in React functional components?",
+    "tags": ["react", "hooks", "useeffect"],
+    "questioned_by": "react_learner",
+    "no_of_votes": 188,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "useEffect handles side effects like API calls or subscriptions in React components.",
+        "answered_by": "react_pro",
+        "answer_votes": 170,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Remember to return a cleanup function!",
+            "commented_by": "state_hooker"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How do JOINs work in SQL and when should I use each type?",
+    "body": "Can someone explain INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN with simple examples?",
+    "tags": ["sql", "joins", "database"],
+    "questioned_by": "databasenerd",
+    "no_of_votes": 151,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "INNER JOIN returns matching rows. LEFT JOIN keeps all rows from left table. RIGHT JOIN from right table. FULL JOIN returns all rows with NULLs for missing matches.",
+        "answered_by": "sqlexpert",
+        "answer_votes": 134,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Helpful to visualize joins with Venn diagrams.",
+            "commented_by": "querygeek"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between machine learning and deep learning?",
+    "body": "Are machine learning and deep learning the same thing? What’s the key difference between them?",
+    "tags": ["ai", "machine-learning", "deep-learning"],
+    "questioned_by": "ml_beginner",
+    "no_of_votes": 169,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Machine learning is a broad field. Deep learning is a subset using neural networks with many layers.",
+        "answered_by": "ai_thinker",
+        "answer_votes": 152,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Deep learning needs more data and compute.",
+            "commented_by": "dl_scientist"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the purpose of the Python 'with' statement?",
+    "body": "I keep seeing the 'with' keyword in Python used for opening files. What does it actually do and why should I use it?",
+    "tags": ["python", "with-statement", "context-manager"],
+    "questioned_by": "filehandler101",
+    "no_of_votes": 141,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "The 'with' statement simplifies exception handling and ensures proper resource cleanup, such as closing a file.",
+        "answered_by": "py_caretaker",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Especially useful for file handling and database connections.",
+            "commented_by": "snakedev"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is Continuous Integration and how is it different from Continuous Deployment?",
+    "body": "CI/CD are common terms in DevOps, but I still don’t clearly understand how they differ and what tools implement them.",
+    "tags": ["devops", "ci/cd", "jenkins", "gitlab"],
+    "questioned_by": "automation_flow",
+    "no_of_votes": 178,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Continuous Integration (CI) is the practice of frequently integrating code into a shared repo. Continuous Deployment (CD) takes that to production automatically.",
+        "answered_by": "pipeline_master",
+        "answer_votes": 165,
+        "comments": {
+          "comment 1": {
+            "commented_message": "GitHub Actions is also a good option for CI/CD.",
+            "commented_by": "cloudsync"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What are Promises in JavaScript and how do they work?",
+    "body": "I’m trying to understand Promises in JS. How do they handle asynchronous operations and what are then/catch?",
+    "tags": ["javascript", "promises", "async"],
+    "questioned_by": "asynclearner",
+    "no_of_votes": 191,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Promises represent future values. Use .then() to handle success and .catch() for errors.",
+        "answered_by": "js_async_pro",
+        "answer_votes": 177,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Helps clean up callback hell.",
+            "commented_by": "nodewarrior"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is JSX in React and why is it used?",
+    "body": "I often see JSX in React examples. What exactly is it and why does React use it?",
+    "tags": ["react", "jsx"],
+    "questioned_by": "frontend_dev",
+    "no_of_votes": 167,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "JSX is a syntax extension that lets you write HTML in JavaScript. It's syntactic sugar for React.createElement().",
+        "answered_by": "reactevangelist",
+        "answer_votes": 158,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Makes UI code easier to write and maintain.",
+            "commented_by": "component_guru"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is normalization in relational databases?",
+    "body": "Can someone explain what normalization is in SQL databases and why it’s important?",
+    "tags": ["sql", "database", "normalization"],
+    "questioned_by": "dbexplorer",
+    "no_of_votes": 147,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Normalization is the process of organizing data to reduce redundancy. It involves splitting tables and using relationships.",
+        "answered_by": "relational_guru",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Start with 1NF, 2NF, and 3NF for basic DB design.",
+            "commented_by": "schema_master"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the Java Stream API used for?",
+    "body": "I've heard about the Stream API introduced in Java 8. What are its main uses and benefits over loops?",
+    "tags": ["java", "stream", "java-8"],
+    "questioned_by": "lambda_lover",
+    "no_of_votes": 156,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "The Stream API lets you process collections with a functional approach: filtering, mapping, reducing, etc.",
+        "answered_by": "java_stream_dev",
+        "answer_votes": 140,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Use streams for concise and readable code.",
+            "commented_by": "efficientcoder"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the purpose of 'select_related' in Django ORM?",
+    "body": "I'm seeing 'select_related' used in Django queries. What does it do and when should I use it?",
+    "tags": ["django", "orm", "select_related"],
+    "questioned_by": "queryoptimizer",
+    "no_of_votes": 143,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "'select_related' is used to reduce the number of DB queries by doing a SQL join and including the related objects in the original query.",
+        "answered_by": "django_prof",
+        "answer_votes": 132,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Very useful for foreign key optimization.",
+            "commented_by": "ormfanatic"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is entanglement in quantum computing?",
+    "body": "I hear a lot about entanglement in quantum topics. What does it mean and how is it used in quantum algorithms?",
+    "tags": ["quantum-computing", "entanglement"],
+    "questioned_by": "entanglebeginner",
+    "no_of_votes": 129,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Entanglement is a phenomenon where qubits become linked, so the state of one directly affects the other, even at a distance.",
+        "answered_by": "qdev_pro",
+        "answer_votes": 115,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Crucial for quantum teleportation and speedup.",
+            "commented_by": "qexplorer"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the purpose of Python's enumerate() function?",
+    "body": "I see enumerate() used in loops. How is it different from using a simple for loop with range()?",
+    "tags": ["python", "enumerate", "loops"],
+    "questioned_by": "loopwizard",
+    "no_of_votes": 136,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "enumerate() allows iteration over index and value pairs, which is more Pythonic and readable than range(len()).",
+        "answered_by": "py_idiomatic",
+        "answer_votes": 122,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also prevents off-by-one errors.",
+            "commented_by": "cleanlooper"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What are closures in JavaScript and how do they work?",
+    "body": "I’m trying to understand closures in JavaScript. Can someone explain how they capture variables?",
+    "tags": ["javascript", "closures", "scope"],
+    "questioned_by": "js_scope_explorer",
+    "no_of_votes": 172,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "A closure is formed when an inner function remembers variables from its outer function, even after that function has returned.",
+        "answered_by": "scope_master",
+        "answer_votes": 158,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Essential for creating private variables.",
+            "commented_by": "modular_dev"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How does React use keys in lists and why are they important?",
+    "body": "When rendering lists in React, we’re asked to use keys. Why are they necessary and what problems do they solve?",
+    "tags": ["react", "keys", "lists"],
+    "questioned_by": "vdom_dev",
+    "no_of_votes": 155,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Keys help React identify which items have changed, are added, or removed, optimizing rendering.",
+        "answered_by": "reconcile_guru",
+        "answer_votes": 140,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Avoid using index as key unless items never change order.",
+            "commented_by": "fiber_fan"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between a stack and a queue?",
+    "body": "I am learning data structures and I’m confused between stacks and queues. What are their differences and use cases?",
+    "tags": ["dsa", "stack", "queue"],
+    "questioned_by": "algo_noob",
+    "no_of_votes": 144,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Stacks are LIFO (last in, first out), used in recursion. Queues are FIFO (first in, first out), used in scheduling.",
+        "answered_by": "dataflow",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Good explanation for beginners!",
+            "commented_by": "dsalearner"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is quantum decoherence?",
+    "body": "I keep hearing about decoherence in quantum computing. What does it mean and why is it a problem?",
+    "tags": ["quantum-computing", "decoherence"],
+    "questioned_by": "quantumseeker",
+    "no_of_votes": 121,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Decoherence is when a quantum system loses its quantum behavior due to interference with the environment, causing it to act classically.",
+        "answered_by": "quant_physx",
+        "answer_votes": 110,
+        "comments": {
+          "comment 1": {
+            "commented_message": "That’s why quantum systems are so fragile!",
+            "commented_by": "qhardware"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the use of the volatile keyword in Java?",
+    "body": "I often see volatile used in multithreading code. What does it do and when should I use it?",
+    "tags": ["java", "multithreading", "volatile"],
+    "questioned_by": "threadrider",
+    "no_of_votes": 134,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "volatile ensures visibility of changes to variables across threads. It does not guarantee atomicity.",
+        "answered_by": "javathinker",
+        "answer_votes": 120,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Great for flags and status variables.",
+            "commented_by": "safe_threads"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is reinforcement learning and how does it differ from supervised learning?",
+    "body": "I’m learning about AI and confused about how reinforcement learning differs from supervised learning. Can someone break it down with examples?",
+    "tags": ["ai", "reinforcement-learning", "supervised-learning"],
+    "questioned_by": "rl_noob",
+    "no_of_votes": 164,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Supervised learning learns from labeled data. Reinforcement learning learns by interacting with an environment and receiving rewards or penalties.",
+        "answered_by": "ai_strategist",
+        "answer_votes": 152,
+        "comments": {
+          "comment 1": {
+            "commented_message": "RL is great for game AI and robotics.",
+            "commented_by": "gym_fan"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How does Django handle user authentication out of the box?",
+    "body": "I’m trying to build a login system in Django. What default features does it offer for user authentication and how can I use them?",
+    "tags": ["django", "authentication", "user"],
+    "questioned_by": "securecoder",
+    "no_of_votes": 142,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Django provides a built-in User model, login/logout views, and session handling. You can extend the User model as needed.",
+        "answered_by": "django_admin",
+        "answer_votes": 128,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also supports password reset and permissions.",
+            "commented_by": "djangosecure"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What are method references in Java 8?",
+    "body": "I’ve seen method references in Java 8 using :: syntax. What do they mean and how are they useful compared to lambdas?",
+    "tags": ["java", "method-references", "java-8"],
+    "questioned_by": "streamliner",
+    "no_of_votes": 129,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Method references are a shorthand for lambdas that call existing methods. For example, str -> System.out.println(str) becomes System.out::println.",
+        "answered_by": "functional_dev",
+        "answer_votes": 115,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Makes code cleaner when just passing methods.",
+            "commented_by": "readability_fan"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between shallow copy and deep copy in Python?",
+    "body": "I am trying to copy nested lists and noticed that copy.copy() and copy.deepcopy() behave differently. Why is that?",
+    "tags": ["python", "copy", "deepcopy"],
+    "questioned_by": "copycat101",
+    "no_of_votes": 140,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "A shallow copy copies the outer object but not nested objects. A deep copy creates a full recursive copy of all objects.",
+        "answered_by": "py_mirrorer",
+        "answer_votes": 125,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Useful when dealing with mutable structures.",
+            "commented_by": "datasafe"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What are the different ways to create objects in JavaScript?",
+    "body": "I’ve seen objects created using {}, Object.create(), and constructor functions. Can someone explain the differences and when to use each?",
+    "tags": ["javascript", "objects", "prototype"],
+    "questioned_by": "objectlover",
+    "no_of_votes": 138,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "You can use object literals for simple cases, Object.create() for prototypal inheritance, and constructors for reusable object blueprints.",
+        "answered_by": "jsobject_master",
+        "answer_votes": 125,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Constructor pattern is powerful for class-style design.",
+            "commented_by": "patternist"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is a foreign key and how does it ensure data integrity?",
+    "body": "I’m learning SQL and want to know how foreign keys help relate tables and enforce consistency.",
+    "tags": ["sql", "foreign-key", "database-integrity"],
+    "questioned_by": "relational_rookie",
+    "no_of_votes": 144,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "A foreign key links rows in one table to rows in another. It prevents orphan records and ensures valid references.",
+        "answered_by": "sqlarchitect",
+        "answer_votes": 130,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Helps a lot in maintaining referential integrity.",
+            "commented_by": "dbguardian"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is transfer learning in deep learning?",
+    "body": "I’ve heard about transfer learning being used in AI. What does it mean and how does it help with small datasets?",
+    "tags": ["ai", "deep-learning", "transfer-learning"],
+    "questioned_by": "datascience_dev",
+    "no_of_votes": 158,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Transfer learning involves using pre-trained models and fine-tuning them for new tasks, saving time and data.",
+        "answered_by": "deepmodeler",
+        "answer_votes": 145,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Popular in image classification with models like ResNet, VGG.",
+            "commented_by": "vision_master"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "What is the difference between @login_required and LoginRequiredMixin in Django?",
+    "body": "I'm confused between the decorator and the mixin for restricting access to authenticated users. When should I use which?",
+    "tags": ["django", "authentication", "loginrequired"],
+    "questioned_by": "viewprotector",
+    "no_of_votes": 132,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "Use @login_required for function-based views and LoginRequiredMixin for class-based views.",
+        "answered_by": "djangoexpert",
+        "answer_votes": 120,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Also consider AccessMixin for more control.",
+            "commented_by": "cbv_ninja"
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "title": "How does React's useContext help with state management?",
+    "body": "I’ve heard useContext can reduce prop drilling. Can someone explain how it fits into managing app-wide state?",
+    "tags": ["react", "hooks", "context"],
+    "questioned_by": "statetactician",
+    "no_of_votes": 149,
+    "question_comments": {},
+    "answers": {
+      "answer 1": {
+        "answer": "useContext allows access to shared state across components without passing props down multiple levels.",
+        "answered_by": "hookmaster",
+        "answer_votes": 135,
+        "comments": {
+          "comment 1": {
+            "commented_message": "Great when combined with useReducer!",
+            "commented_by": "reduxalt"
+          }
+        }
+      }
+    }
+  }
+]

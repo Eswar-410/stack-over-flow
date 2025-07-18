@@ -4,39 +4,251 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=4" />
+
+    <title>{% block title %} Navbar {% endblock %}</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=25" />
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}?v=6" />
+    <link rel="stylesheet" href="{% static 'css/tags.css' %}?v=8" />
+    <link rel="stylesheet" href="{% static 'css/question.css' %}?v=13" />
+    <link rel="stylesheet" href="{% static 'css/question_analysis.css' %}?v=13" />
+
   </head>
   <body>
     <div class="nav-upper">
-      <img class="image-logo" src="{% static 'images/logo.svg' %}" />
-      <span class="heading">Stack <b>overflow</b></span>
+      <div class="heading-section">
+        <img class="image-logo" src="{% static 'images/logo.svg' %}" />
+        <span class="heading">Stack <b>overflow</b></span>
+      </div>
+
       <form method="POST">
         <input
           type="text"
           name="global-search"
           class="global-search"
           placeholder="Search..."
+          required
         />
         <button class="button" type="submit">Search</button>
       </form>
-      <div class="profile-identification">E</div>
+      <div class="profile-container">
+        <div class="profile-identification">
+          <a id='profile' href="{% url 'profile' %}">{% block profile_identification %}?{% endblock %}</a>
+        </div>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'accounts:logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="log">Log Out</button>
+        </form>
+        {% else %}
+        <a href="{% url 'accounts:login' %}">
+          <button type="button" class="log">Log In</button>
+        </a>
+        {% endif %}
+      </div>
     </div>
 
     <hr />
 
-    <div class="nav-left">
-      <nav class="nav">
-        <ul class="nav-section">
-          <li class="nav-items"><a href="#" class="nav-elements">Home</a></li>
-          <li class="nav-items">
-            <a href="#" class="nav-elements">Questions</a>
-          </li>
-          <li class="nav-items"><a href="#" class="nav-elements">Tags</a></li>
-          <li class="nav-items"><a href="#" class="nav-elements">Saves</a></li>
-          <li class="nav-items"><a href="#" class="nav-elements">Users</a></li>
-        </ul>
-      </nav>
+    <div class="main-container">
+      <div class="nav-left">
+        <nav class="nav">
+          <ul class="nav-section">
+            <div class="nav-items">
+              <i class="fa-solid fa-house"></i>
+              <li><a href="{% url 'home' %}" class="nav-elements">Home</a></li>
+            </div>
+
+            <div class="nav-items">
+              <i class="fa-regular fa-circle-question"></i>
+              <li>
+                <a href="{% url 'questions' %}" class="nav-elements">Questions</a>
+              </li>
+            </div>
+
+            <div class="nav-items">
+              <i class="fa-solid fa-tags"></i>
+              <li><a href="{% url 'tags' %}" class="nav-elements">Tags</a></li>
+            </div>
+
+            <div class="nav-items">
+              <i class="fa-solid fa-user"></i>
+              <li><a href="{% url 'profile' %}" class="nav-elements">Profile</a></li>
+            </div>
+          </ul>
+        </nav>
+      </div>
+      {% block homeContainer %}
+      <div class="home-container">
+        <!-- Home Content -->
+
+        {% block greeting_container %}
+        <div class="greeting-home">
+          <div class="{% block hand_wave_adjust %} hand-wave-adjust {% endblock %}">
+            <span class="hand-wave-home"
+              >{% block handWave %} {% endblock %}</span
+            >
+          </div>
+          <div class="heading-container">
+            <h1 class="heading-home">{% block greeting %} {% endblock %}</h1>
+            <p>{% block paragraph %} {% endblock %}</p>
+          </div>
+          <div class="question">
+            <form action="{% url 'question' %}" class="question-render-form">
+              <button
+                class="{% block button_class %} {% endblock %}"
+                type="submit"
+              >
+                {%block question %}{% endblock %}
+              </button>
+            </form>
+          </div>
+        </div>
+        {% endblock %}
+
+        <div class="display-questions-container">
+          {% block display %}
+          <div class="questions-heading">
+            <h2>Interesting posts for you</h2>
+            <p>Explore the Latest Questions from the Community</p>
+          </div>
+          <div class="display-questions">
+            {% for question_card in questions_data %}
+            <div class="question-card">
+              {% block question_card %}
+              <div class="question-part">
+              <h3>
+                <a href="{% url 'analysis' question_card.pk %}" class="question-title">{{ question_card.title }}</a>
+              </h3>
+              <p>{{question_card.body|truncatechars:200}}</p>
+              <div class="tags">
+                <form action="{% url 'tag_questions' %}">
+                  {% csrf_token %}
+                {% for tag in question_card.tags %}
+                <button class="button-tags" name="tag" type="submit" value="{{tag}}">{{tag}}</button>
+                {% endfor %}
+                </form>
+              </div>
+              </div>
+              <div class="approval-container">
+              <button class="vote-count">{{question_card.no_of_votes}} Votes</button>
+              <span>{{question_card.questioned_by}}</span>
+            </div>
+            {% endblock %}
+          </div>
+            {% endfor %}
+
+          </div>
+            {% endblock %}
+        </div>
+      {% endblock %}
+
+      <div class="{% block question_analysis_container %} {% endblock %}">
+        {% block question_analysis %} {% endblock %}
+      </div>
+
+      <!-- Question Content -->
+      {% block question_container %}
+      <div class="question-container">
+        <div class="ask-question-text">
+          <h1>{% block question_text %} {% endblock %}</h1>
+        </div>
+
+        <div class="{% block quesion_container_class %} {% endblock %}">
+          <h3>{% block question_instructions_heading %} {% endblock %}</h3>
+          <p>{% block question_instructions_text %} {% endblock %}</p>
+          <ul class="steps-align">
+            <b>{% block steps %}{% endblock %}</b>
+
+            <li class="step-align">{% block step1 %} {% endblock %}</li>
+            <li class="step-align">{% block step2 %} {% endblock %}</li>
+            <li class="step-align">{% block step3 %} {% endblock %}</li>
+            <li class="step-align">{% block step4 %} {% endblock %}</li>
+            <li class="step-align">{% block step5 %} {% endblock %}</li>
+          </ul>
+        </div>
+
+        <div class="questioning-form">
+          {% block questioning_form %}
+          <form class="question-form" method="POST" action="/data/">
+            {% csrf_token %}
+            <div class="questioning-title item-gap">
+              <label for="title">{% block form_title %}{% endblock %}</label>
+              <label for="title"
+                >{% block form_title_content %} {% endblock %}</label
+              >
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="input-control"
+                placeholder="Enter the query here..."
+                required
+              />
+            </div>
+
+            <div class="questioning-body item-gap">
+              <label for="body">{% block form_body %}{% endblock %}</label>
+              <label for="body"
+                >{% block form_body_content %} {% endblock %}</label
+              >
+              <textarea
+                name="body"
+                id="body"
+                class="large-input-control"
+                placeholder="Share the detailed explanation here..."
+              ></textarea>
+            </div>
+
+            <div class="questioning-tags item-gap">
+              <label for="tags">{% block form_tags %}{% endblock %}</label>
+              <label for="tags"
+                >{% block form_tags_content %} {% endblock %}</label
+              >
+              <input
+                type="text"
+                name="tags"
+                id="tags"
+                class="input-control"
+                placeholder="domains related..."
+                required
+              />
+            </div>
+
+            <div class="manipulate-question-data">
+              <button class="post-question" type="submit">
+                {% block post_question %} {% endblock %}
+              </button>
+
+              <button type="reset" class="clear-content">
+                {% block clear_content %} {% endblock %}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {% endblock %}
+      </div>
+      {% endblock %}
+
+    <div class="{% block specific_page_container %}{% endblock %}"> {% block specific_container %} {% endblock %}</div>
+
     </div>
+
+
+    <script src="{%static 'js/render.js' %}?v=2"></script>
+    {% block homeJS %}<script src="{%static 'js/home.js' %}?v=3"></script>{% endblock %}
+    {% block profile %}{% endblock %}
+    {% block tags %}{% endblock %}
+    {% block questions %}{% endblock %}
+
   </body>
 </html>

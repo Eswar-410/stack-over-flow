@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %} Question Page {% endblock %}
+
+{% block greeting_container %} {% endblock %}
+
+
+
+
+
+
+
+        {% block display %}
+
+          <div class="questions-heading">
+            <h1>[{{tag}}]</h1>
+            <p>{{tag}} involved in {{questions_count}} question(s)</p>
+          </div>
+          <div class="display-questions">
+            {% for question_card in questions_data %}
+            <div class="question-card">
+              {% block question_card %}
+              <div class="question-part">
+              <h3>
+                <a href="{% url 'analysis' question_card.pk %}"  class="question-title">{{ question_card.title }}</a>
+              </h3>
+              <p>{{question_card.body|truncatechars:200}}</p>
+              <div class="tags">
+                <form action="{% url 'tag_questions' %}">
+                  {% csrf_token %}
+                {% for tag in question_card.tags %}
+                <button class="button-tags" name="tag" type="submit" value="{{tag}}">{{tag}}</button>
+                {% endfor %}
+                </form>
+              </div>
+              </div>
+              <div class="approval-container">
+              <button class="vote-count">{{question_card.no_of_votes}} Votes</button>
+              <span>{{question_card.questioned_by}}</span>
+            </div>
+            {% endblock %}
+          </div>
+            {% endfor %}
+
+          </div>
+
+         
+          
+        {% endblock %}
+
+
+{% block questions %}
+  <script src="{% static 'js/questions.js' %}"></script>
+{% endblock %}

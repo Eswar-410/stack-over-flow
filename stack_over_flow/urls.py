@@ -21,4 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('questions.urls')),
+    # namespace is a label you give to a group of URLs — usually from a specific app — so Django knows exactly where to look when resolving a URL.
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+
 ]

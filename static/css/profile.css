@@ -1,0 +1,108 @@
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 100%;
+}
+.profile-viewer {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+}
+.profile-logo {
+  width: 15%;
+  height: 80%;
+  align-self: center;
+  border-radius: 15%;
+  object-fit: cover;
+}
+.profile-name {
+  width: 25%;
+  height: 100%;
+  padding: 1rem;
+  font-size: 2.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  color: #1b2661;
+}
+.user-statistics {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.stats {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 60%;
+  color: black;
+  justify-content: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+}
+
+.following-statistics {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+  color: black;
+  padding: 0.5rem;
+  gap: 0.3rem;
+}
+.follow-questions {
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+.statistics,
+.following-records {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: 1px solid gainsboro;
+  padding: 1rem;
+  justify-content: left;
+}
+
+.statistics {
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.record {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+.record span {
+  font-size: 1.8rem;
+}
+.record p {
+  font-size: 0.5rem;
+  color: grey;
+}
+
+@media (max-width: 1023px) {
+  .user-statistics {
+    flex-direction: column;
+  }
+  .stats {
+    width: 100%;
+  }
+  .record {
+    width: 30%;
+  }
+  .following-statistics {
+    width: 100%;
+  }
+  .follow-questions {
+    overflow: initial;
+    height: auto;
+    max-height: none;
+    margin-bottom: 2rem;
+  }
+}

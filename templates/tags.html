@@ -1,0 +1,54 @@
+{% extends 'partials/navbar.html' %}
+{% load static %}
+
+
+{% block homeContainer %} {% endblock %}
+{% block display %} {% endblock %}
+{% block question_container %} {% endblock %}
+
+{% block profile_identification %} {{ user.username|first|upper }} {% endblock %}
+{% block homeJS %} {% endblock %}
+
+{% block specific_page_container %} tags-container {% endblock %}
+
+{% block specific_container %}
+
+
+
+<h1>Tags</h1>
+
+<p>
+  Tags are descriptive keywords or labels that categorize your question, helping
+  group it with similar topics for better discoverability. Using accurate and
+  relevant tags increases the visibility of your question and ensures it reaches
+  the right audience. Tags also improve searchability and help maintain the
+  structure and quality of the platform's content.
+</p>
+<div class="search-tags">
+<form method="POST">
+  {% csrf_token %}
+  <div class="style-search">
+  <input type="text" name="search-tag" class="search-tag" id="search-tag" placeholder="Filter by tag name" required>
+  </div>
+  <button type="submit" class="tag-search">Filter</button>
+</form>
+</div>
+
+<div class="tag-records-container">
+  {% for tag,count in tags.items %}
+  
+  <div class="tag-record">
+    <form class="transfer-tag" action="{% url 'tag_questions' %}">
+    <button class="tag-name" name="tag" type="submit" value="{{tag}}"> {{tag}}</button>
+    </form>
+
+    <p class="tag-involved">{{count}} Questions </p>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
+{% block tags %}
+  <script src="{% static 'js/tags.js' %}"></script>
+{% endblock %}

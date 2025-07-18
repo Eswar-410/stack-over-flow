@@ -1,0 +1,99 @@
+{% extends 'partials/navbar.html' %}
+{% load static %}
+
+
+{% block homeContainer %} {% endblock %}
+{% block display %} {% endblock %}
+{% block question_container %} {% endblock %}
+
+{% block profile_identification %} {{ user.username|first|upper }} {% endblock %}
+{% block homeJS %} {% endblock %}
+
+{% block specific_page_container %} profile-page-container {% endblock %}
+
+{% block specific_container %}
+
+    
+
+<div class="profile-viewer">
+    <img class="profile-logo " src="{% static 'images/profile_logo.jpg' %}" />
+    <h1 class="profile-name">{{user.username}}</h1>
+</div>
+
+<div class="user-statistics">
+
+<div class="stats">
+    <h2>User Stats</h2>
+    <div class="statistics">
+        <div class="record">
+            <span>{{question_votes}}</span>
+            <p>Question votes</p>
+        </div>
+
+        <div class="record">
+            <span>{{questions_count}}</span>
+            <p>Questions asked</p>
+        </div>
+
+        <div class="record">
+            <span>{{answer_votes}}</span>
+            <p>Answer votes</p>
+        </div>
+
+        <div class="record">
+            <span>{{answers_count}}</span>
+            <p>Answers given</p>
+        </div>
+
+        <div class="record">
+            <span>{{question_comments_count}}</span>
+            <p>Question Comments</p>
+        </div>
+
+        <div class="record">
+            <span>{{answer_comments_count}}</span>
+            <p>Answer Comments</p>
+        </div>
+        
+    </div>
+
+</div>
+<div class="following-statistics">
+    <h2>Following Questions</h2>
+  <div class="follow-questions">
+    <div class="display-questions">
+            {% for question_card in following_cards %}
+            <div class="question-card">
+              {% block question_card %}
+              <div class="question-part">
+              <h3>
+                <a href="{% url 'analysis' question_card.pk %}" class="question-title">{{ question_card.title }}</a>
+              </h3>
+              <p>{{question_card.body|truncatechars:200}}</p>
+              <div class="tags">
+                <form action="{% url 'tag_questions' %}">
+                  {% csrf_token %}
+                {% for tag in question_card.tags %}
+                <button class="button-tags" name="tag" type="submit" value="{{tag}}">{{tag}}</button>
+                {% endfor %}
+                </form>
+              </div>
+              </div>
+              <div class="approval-container">
+              <button class="vote-count">{{question_card.no_of_votes}} Votes</button>
+              <span>{{question_card.questioned_by}}</span>
+            </div>
+            {% endblock %}
+          </div>
+            {% endfor %}
+
+          </div>
+          </div>
+</div>
+
+
+{% endblock %}
+
+{% block profile %}
+  <script src="{% static 'js/profile.js' %}?v=2"></script>
+{% endblock %}

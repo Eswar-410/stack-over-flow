@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'partials/navbar.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block profile_identification %}
+{% if user.is_authenticated %}
+
+
+  {{ user.username|first|upper }}
+
+{% else %}
+
+    ?
+{% endif %}
+{% endblock %}
+{% block handWave %} 👋 {% endblock %}
+
+{% block greeting %} 
+{% if user.is_authenticated %}
+Welcome to Stack Overflow, {{user.username}}! 
+
+{% else %}
+ Welcome to Stack Overflow! 
+{% endif %}
+{% endblock %}
+
+{% block paragraph %} Find answers to your technical questions and help others answer theirs. {% endblock %}
+
+{% block button_class %} ask-question {% endblock %}
+
+{% block question %} Ask Question {% endblock %}
+
+{% block question_container %} {% endblock %}

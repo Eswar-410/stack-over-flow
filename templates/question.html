@@ -1,0 +1,58 @@
+{% extends 'partials/navbar.html' %} 
+
+{% block title %} Question {% endblock %}
+
+{% block homeContainer %} {% endblock %}
+
+{% block question_text %} Ask a public question {% endblock %}
+
+{% block quesion_container_class %} question-instructions {% endblock %}
+
+{% block profile_identification %}
+{% if user.is_authenticated %}
+
+
+  {{ user.username|first|upper }}
+
+{% else %}
+
+    ?
+{% endif %}
+{% endblock %}
+
+
+<!-- question instructions -->
+
+{% block question_instructions_heading %} Writing a good question {% endblock %}
+
+{% block question_instructions_text %}You’re ready to ask a programming-related question and this form will help guide you through the process. {% endblock %}
+
+{% block steps %} Steps {% endblock %}
+{% block step1 %} Summarize your problem in a one-line title. {% endblock %}
+{% block step2 %} Describe your problem in more detail. {% endblock %}
+{% block step3 %}Describe what you tried and what you expected to happen. {% endblock %}
+{% block step4 %} Add “tags” which help surface your question to members of the community. {% endblock %}
+{% block step5 %} Review your question and post it to the site. {% endblock %}
+
+<!-- questioning-form -->
+
+
+        {% block form_title %} <b>Title*</b> {% endblock %}
+
+        {% block form_title_content %} Be specific and imagine you’re asking a question to another person{% endblock %}
+
+        {% block form_body %} <b>Body*</b> {% endblock %}
+
+        {% block form_body_content %} Include all the information someone would need to answer your question {% endblock %}
+
+        {% block form_tags %} <b>Tags*</b> {% endblock %}
+
+        {% block form_tags_content %} Add up to 5 tags to describe what your question is about {% endblock %}
+
+       {% block post_question %} Post Question {% endblock %}
+
+       {% block clear_content %} Clear {% endblock %}
+             
+
+        
+        

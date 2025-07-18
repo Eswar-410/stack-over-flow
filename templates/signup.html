@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}?v=5" />
+    <title>Signin Page</title>
+  </head>
+  <body>
+    <marquee scrollamount="15"><h1>Register for an account</h1></marquee>
+    <div class="signup-container">
+     
+      <div class="signup-form-container">
+        <h1>Create an account</h1>
+        <p>
+          Already have an account
+          <a class="login-render" href="{% url 'accounts:login' %}">Log in</a>
+        </p>
+
+          <form class="signup-form" method="POST">
+            {% csrf_token %}
+            {% for item in form %}
+
+            <div class="form-set">
+
+            {{item.label_tag}}
+            {{item}}
+
+            {% endfor %}
+
+            <button class="signup-button" type="submit">Register</button>
+          </form>
+          
+      </div>
+    </div>
+    <script src="{%static 'js/render.js' %}?v=1"></script>
+
+  </body>
+</html>

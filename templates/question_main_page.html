@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block title %} Questions Page {% endblock %}
+
+{%block hand_wave_adjust %} question-symbol-adjust {% endblock %}
+{% block handWave %} <i class="fa-solid fa-clipboard-question"></i> {% endblock %}
+
+{% block greeting %} Questions {% endblock %}
+{% block paragraph %} Explore {{questions_data|length}} Insightful questions here...{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% block questions %}
+  <script src="{% static 'js/questions.js' %}"></script>
+{% endblock %}

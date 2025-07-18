@@ -1,0 +1,100 @@
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 100%;
+  color: black;
+  gap: 1rem;
+}
+.search-tags {
+  width: 100%;
+  min-height: 5.5vh;
+  display: flex;
+  margin-top: 1rem;
+}
+.style-search {
+  width: 40%;
+  height: 100%;
+  border-radius: 7px;
+  border: 2px solid blue;
+  padding: 1px;
+}
+
+.search-tag {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  padding: 5px;
+}
+
+.search-tags form {
+  width: 100%;
+}
+
+.tag-search {
+  width: 8rem;
+  height: 80%;
+  background-color: rgb(18, 156, 18);
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  align-self: center;
+}
+
+.tag-records-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem 0 2rem 0;
+}
+.transfer-tag {
+  display: flex;
+  min-width: 100%;
+  justify-content: center;
+}
+
+.tag-record {
+  border: 1px solid darkolivegreen;
+  padding: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-name {
+  padding: 0.7rem;
+  background-color: purple;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+}
+.tag-involved {
+  color: rgb(82, 77, 77);
+  font-size: 0.7rem;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tag-records-container {
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .tag-records-container {
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+
+  .style-search {
+    height: 80%;
+    align-self: center;
+    width: 50%;
+  }
+
+  .tag-search {
+    height: 60%;
+  }
+}

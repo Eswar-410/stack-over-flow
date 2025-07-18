@@ -1,0 +1,90 @@
+.question-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 70px;
+  color: black;
+  gap: 40px;
+  padding: 2rem;
+}
+.question-instructions {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid blueviolet;
+  padding: 1rem;
+  gap: 0.5rem;
+  background-color: lightyellow;
+}
+.steps-align {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.step-align {
+  margin-left: 50px;
+}
+
+.questioning-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 55vh;
+  background-color: rgb(57, 109, 109);
+  color: white;
+  padding: 1rem;
+  box-shadow: 10px 10px 25px rgb(138, 185, 185),
+    -10px -10px 25px rgb(138, 185, 185);
+}
+
+.question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.item-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-control {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid rgb(82, 76, 76);
+  padding: 5px;
+}
+
+.large-input-control {
+  min-height: 140px;
+  width: 100%;
+  border-radius: 5px;
+  border: 2px solid rgb(82, 76, 76);
+  padding: 5px;
+}
+
+.manipulate-question-data {
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  gap: 15px;
+}
+
+.post-question {
+  width: 8rem;
+  height: 50%;
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.clear-content {
+  display: flex;
+  width: 8rem;
+  height: 50%;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(57, 109, 109);
+  color: yellow;
+}
+

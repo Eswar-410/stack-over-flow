@@ -1,0 +1,241 @@
+{% extends 'partials/navbar.html' %}
+{% load static %}
+
+{% block title %} Question Analysis {% endblock %}
+{% block homeContainer %} {% endblock %}
+
+{% block profile_identification %} {{ user.username|first|upper }} {% endblock %}
+{% block display %} {% endblock %}
+{% block question_container %} {% endblock %}
+
+{% block question_analysis_container %} question-analysis-container {% endblock %}
+{% block question_analysis %}
+
+<div class="question-header">
+  <h1>{{question_details.title}}</h1>
+  <h5>Asked by {{question_details.questioned_by}}</h5>
+</div>
+
+<div class="question-body">
+  <div class="details">
+    
+      <form action="{% url 'upvote' %}" >
+        {% csrf_token %}
+        <input name="upvote" type="hidden" value="{{question_details.no_of_votes}}">
+        <input name="upvote_id" type="hidden" value="{{question_details.id}}">
+
+        <button class="upvote-container" type="submit">
+        <i class="fa-solid fa-angle-up"></i>
+      </button>
+      </form>
+      <div class="display-vote">
+        <span class="vote-number">{{question_details.no_of_votes}}</span>
+      </div>
+      <form action="{% url 'downvote' %}" >
+        {% csrf_token %}
+        <input name="downvote" type="hidden" value="{{question_details.no_of_votes}}">
+        <input name="downvote_id" type="hidden" value="{{question_details.id}}">
+
+      <button class="downvote-container" type="submit">
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
+      </form>
+      
+  </div>
+  <div class="body">
+    <p>{{question_details.body}}</p>
+    <form action="{% url 'tag_questions' %}">
+    {% for tag in question_details.tags %}
+      {% csrf_token %}
+    <button class="tag-beneath-body" value="{{tag}}" name="tag" type="submit">{{tag}}</button>
+    {% endfor %}
+    </form>
+  </div>
+</div>
+
+<div class="follow-question-container">
+  <form action="{% url 'profile' %}">
+    {% csrf_token %}
+  <button class="follow-button" type="submit" name="follow" value="{{question_details.id}}">Follow</button>
+  </form>
+</div>
+
+  <div class="display-comments">
+    <h2>Comments</h2>
+      {% if question_comments|length == 0 %}
+      <span>no comments found</span>
+
+      {% else %}
+
+    <div class="comment-section">
+      {% for question_comment in question_comments %}
+      <div class="each-comment-container">
+        <p class="commented-message">{{question_comment.commented_message}}</p>
+        <div class="commented-profile">
+          <button class="commented-logo">{{question_comment.commented_by|first}}</button>
+          <p>{{question_comment.commented_by}}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+      {% endif %}
+
+    <form class="add-comment" method="POST" action="{% url 'add_comment' question_details.id %}">
+      {% csrf_token %}
+      <input placeholder="Add comment..." name="manual-comment" class="manual-comment" required/>
+
+    </form>
+  </div>
+
+<div class="display-answers">
+  <h2>Answers</h2>
+  {% for each_answer in answer_details %}
+  <h3>Answer {{forloop.counter}}.</h3>
+  <div class="answer-header">
+    <div class="answer-reach">
+      <form action="{% url 'answer_upvote' question_details.id %}" >
+        {% csrf_token %}
+
+        <input name="upvote" type="hidden" value="{{each_answer.answer_votes}}">
+        <input name="upvote_id" type="hidden" value="{{each_answer.id}}">
+
+        <button class="upvote-container" type="submit">
+        <i class="fa-solid fa-angle-up"></i>
+      </button>
+      </form>
+      <div class="display-vote">
+        <span class="vote-number">{{each_answer.answer_votes}}</span>
+      </div>
+      <form action="{% url 'answer_downvote' question_details.id %}" >
+        {% csrf_token %}
+
+        <input name="downvote" type="hidden" value="{{each_answer.answer_votes}}">
+        <input name="downvote_id" type="hidden" value="{{each_answer.id}}">
+
+      <button class="downvote-container" type="submit">
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
+      </form>
+      
+
+    </div>
+    <div class="answer-content">
+    <h3>{{each_answer.answer}}</h3>
+    <h5>Answered by {{each_answer.answered_by}}</h5>
+    </div>
+  </div>
+
+  <div class="display-comments">
+    <h2>Answer {{forloop.counter}}. comments</h2>
+
+    {% if each_answer.comments.all|length == 0 %}
+
+    <span>no comments found</span>
+
+      {% else %}
+    
+      <div class="comment-section">
+    {% for comment in each_answer.comments.all %}
+    <div class="each-comment-container">
+    <p class="commented-message">{{comment.commented_message}}</p>
+    <div class="commented-profile">
+      <button class="commented-logo">{{comment.commented_by|first|upper}}</button>
+      <p>{{comment.commented_by}}</p>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
+  <form class="add-comment" method="POST" action="{% url 'add_answer_comment' each_answer.id %}">
+      {% csrf_token %}
+      <input placeholder="Add comment..." name="manual-comment" class="manual-comment" required/>
+
+    </form>
+
+  </div>
+  {% endfor %}
+</div>
+
+
+
+  <form method="POST" class="answer-form" action="{% url 'add_answer' question_details.id %}">
+    {% csrf_token %}
+  <div id="add-answer">
+    <h2>Post Your Answer</h2>
+    <textarea type="text" name="manual-answer"  id="manual-answer" placeholder="post your answer to help....." required></textarea>
+
+    <button class="answer-post-button" type="submit">Post Answer</button>
+  </div>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block questions %}
+  <script src="{% static 'js/questions.js' %}?v=3"></script>
+{% endblock %}
