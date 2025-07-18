@@ -17,6 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.core.management import call_command
+from django.http import HttpResponse
+
+
+def run_migrations(request):
+    call_command("migrate")
+    return HttpResponse("Migrations done.")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +32,5 @@ urlpatterns = [
     # namespace is a label you give to a group of URLs — usually from a specific app — so Django knows exactly where to look when resolving a URL.
     path('accounts/', include('accounts.urls', namespace='accounts')),
 
+    path("run-migrations/", run_migrations),
 ]
