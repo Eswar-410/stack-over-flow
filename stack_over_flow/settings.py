@@ -78,21 +78,12 @@ WSGI_APPLICATION = "stack_over_flow.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-try:
-    # Try to get DATABASE_URL directly (for deployment)
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=config('DATABASE_URL'), conn_max_age=600
-        )
-    }
-except UndefinedValueError:
-    # Fallback for local dev with individual DB_... parts
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=f"postgres://{config('DB_USER')}:{config('DB_PASSWORD')}@{config('DB_HOST')}:{config('DB_PORT')}/{config('DB_NAME')}",
-            conn_max_age=600
-        )
-    }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
 
 
 # Password validation
