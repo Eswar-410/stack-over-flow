@@ -4,18 +4,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/accounts.css' %}?v=2" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=26" />
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}?v=6" />
 
     <title>Login Page</title>
   </head>
   <body>
-    <marquee scrollamount="15"><h1>Welcome to Stack overflow</h1></marquee>
+    <div class="nav-upper">
+      <div class="heading-section">
+        <img class="image-logo" src="{% static 'images/logo.svg' %}" />
+        <span class="heading">Stack <b>overflow</b></span>
+      </div>
+
+      <form method="POST">
+        <input
+          type="text"
+          name="global-search"
+          class="global-search"
+          placeholder="Search..."
+          required
+        />
+        <button class="button" type="submit">Search</button>
+      </form>
+      <div class="profile-container">
+        <div class="profile-identification">
+          <a id="profile" href="{% url 'profile' %}"
+            >{% block profile_identification %}?{% endblock %}</a
+          >
+        </div>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'accounts:logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="log">Log Out</button>
+        </form>
+        {% else %}
+        <a href="{% url 'accounts:login' %}">
+          <button type="button" class="log">Log In</button>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
     <div class="login-page">
       <h1 class="login-header">Log in</h1>
       <p>
         Don't have an account
         <a class="signup-render" href="{% url 'accounts:signup' %}">sign up</a>
       </p>
+      {% if messages %}
+      <div class="flash-messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+      {% endif %}
       <form method="POST" class="login-form">
         {% csrf_token %}
         <label for="username">Username </label>

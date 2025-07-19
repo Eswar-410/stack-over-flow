@@ -76,7 +76,6 @@ def profile(request):
     answer_comments = AnswerComment.objects.filter(commented_by=user.username)
     answer_comments_count = answer_comments.count()
 
-    # followed questions
     following_cards = Question.objects.filter(follow__user=user)
 
     context = {
@@ -265,7 +264,7 @@ def answer_downvote(request, pk):
     return redirect(reverse('analysis', kwargs={'pk': pk}))
 
 
-def add_answer_comment(request, pk, id):
+def add_answer_comment(request, pk):
     commented_message = request.POST.get('manual-comment')
     commented_by = request.user
 
@@ -274,8 +273,9 @@ def add_answer_comment(request, pk, id):
         commented_message=commented_message,
         commented_by=commented_by
     )
+    question_id = request.POST.get('question_id')
 
-    url = reverse('analysis', kwargs={'id': id})
+    url = reverse('analysis', kwargs={'pk': question_id})
 
     return redirect(url)
 

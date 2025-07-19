@@ -150,6 +150,7 @@
 
   <form class="add-comment" method="POST" action="{% url 'add_answer_comment' each_answer.id %}">
       {% csrf_token %}
+      <input type="hidden" name="question_id" value="{{ question_details.id }}">
       <input placeholder="Add comment..." name="manual-comment" class="manual-comment" required/>
 
     </form>

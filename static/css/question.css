@@ -1,11 +1,13 @@
 .question-container {
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
   color: black;
   gap: 40px;
   padding: 2rem;
+  height: 100%;
+  width: 100%;
 }
+
 .question-instructions {
   display: flex;
   flex-direction: column;
@@ -47,11 +49,12 @@
 }
 
 .input-control {
-  height: 40px;
+  height: 3rem;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 2px solid rgb(82, 76, 76);
   padding: 5px;
+  font-size: 1rem;
 }
 
 .large-input-control {
@@ -60,6 +63,10 @@
   border-radius: 5px;
   border: 2px solid rgb(82, 76, 76);
   padding: 5px;
+}
+.large-input-control::placeholder {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
 }
 
 .manipulate-question-data {
@@ -71,20 +78,21 @@
 
 .post-question {
   width: 8rem;
-  height: 50%;
+  height: 3rem;
   background-color: orange;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
 .clear-content {
   display: flex;
   width: 8rem;
-  height: 50%;
+  height: 3rem;
   border: 2px solid yellow;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
   background-color: rgb(57, 109, 109);
   color: yellow;
+  font-size: 1rem;
 }
-

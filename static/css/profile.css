@@ -83,7 +83,7 @@
 }
 .record p {
   font-size: 0.5rem;
-  color: grey;
+  color: blue;
 }
 
 @media (max-width: 1023px) {

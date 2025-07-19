@@ -1,14 +1,48 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/accounts.css' %}?v=5" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=26" />
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}?v=6" />
     <title>Signin Page</title>
   </head>
   <body>
-    <marquee scrollamount="15"><h1>Register for an account</h1></marquee>
+    <div class="nav-upper">
+      <div class="heading-section">
+        <img class="image-logo" src="{% static 'images/logo.svg' %}" />
+        <span class="heading">Stack <b>overflow</b></span>
+      </div>
+
+      <form method="POST">
+        <input
+          type="text"
+          name="global-search"
+          class="global-search"
+          placeholder="Search..."
+          required
+        />
+        <button class="button" type="submit">Search</button>
+      </form>
+      <div class="profile-container">
+        <div class="profile-identification">
+          <a id='profile' href="{% url 'profile' %}">{% block profile_identification %}?{% endblock %}</a>
+        </div>
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'accounts:logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="log">Log Out</button>
+        </form>
+        {% else %}
+        <a href="{% url 'accounts:login' %}">
+          <button type="button" class="log">Log In</button>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
     <div class="signup-container">
      
       <div class="signup-form-container">
@@ -17,6 +51,14 @@
           Already have an account
           <a class="login-render" href="{% url 'accounts:login' %}">Log in</a>
         </p>
+
+        {% if messages %}
+        <div class="flash-messages">
+          {% for message in messages %}
+            <div class="alert {{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+        {% endif %}
 
           <form class="signup-form" method="POST">
             {% csrf_token %}

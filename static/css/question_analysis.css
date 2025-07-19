@@ -8,7 +8,7 @@
 }
 
 .question-header {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: purple;
   border-bottom: 1px solid grey;
 }
@@ -52,6 +52,7 @@
 
 .body {
   width: 95%;
+  height:auto;
 }
 .body p {
   line-height: 1.3rem;
@@ -59,12 +60,18 @@
 }
 .body form {
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+  row-gap: 3px;
+  height:auto;
+
 }
 .tag-beneath-body {
   background-color: aquamarine;
   margin-top: 0.5rem;
   padding: 0.5rem;
   border-radius: 4px;
+  font-size: 1rem;
 }
 
 .display-comments {
@@ -112,11 +119,15 @@
   margin-top: 2px;
 }
 .commented-logo {
-  padding: 8px 12px 8px 12px;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
   color: white;
   font-weight: bold;
   border-radius: 50%;
   background-color: purple;
+  font-size: 1rem;
+}
+.commented-message {
+  font-size: 1rem;
 }
 .add-comment {
   width: 100%;
@@ -145,9 +156,8 @@
 }
 
 .answer-header h3 {
-  color: white;
   font-weight: lighter;
-  background-color: #6886d4;
+  border: 1px solid black;
   padding: 1rem;
 }
 
@@ -198,13 +208,28 @@
 .answer-post-button {
   color: white;
   background-color: rgb(50, 196, 50);
-  border-radius: 10px;
-  width: 6rem;
-  height: 40px;
+  border-radius: 5px;
+  width: 6.3rem;
+  height: 3rem;
+  font-size: 1rem;
 }
 .follow-button {
   background-color: greenyellow;
   width: 6rem;
-  height: 40px;
+  height: 3rem;
   border-radius: 5px;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+  .question-body {
+    gap: 2.5rem;
+  }
+  .answer-header {
+    gap: 2.3rem;
+  }
+  .manual-comment {
+  height: 3vh;
+  border-radius: 5px;
+}
 }

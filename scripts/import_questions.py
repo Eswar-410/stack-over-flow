@@ -1,6 +1,5 @@
 # scripts/import_questions.py
 
-from questions.models import Question, QuestionComment, Answer, AnswerComment
 import os
 import sys
 import django
@@ -12,6 +11,7 @@ sys.path.append(BASE_DIR)
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "stack_over_flow.settings")
 django.setup()
 
+from questions.models import Question, QuestionComment, Answer, AnswerComment
 
 with open(os.path.join(BASE_DIR, 'stack_data.json')) as f:
     data = json.load(f)

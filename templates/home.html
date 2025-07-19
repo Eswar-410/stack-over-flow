@@ -1,27 +1,24 @@
 {% extends 'partials/navbar.html' %}
+{% block question_container %} {% endblock %}
 
 {% block title %} Home Page {% endblock %}
 
 {% block profile_identification %}
-{% if user.is_authenticated %}
-
-
-  {{ user.username|first|upper }}
-
-{% else %}
-
+  {% if user.is_authenticated %}
+    {{ user.username|first|upper }}
+  {% else %}
     ?
-{% endif %}
+  {% endif %}
 {% endblock %}
+
 {% block handWave %} 👋 {% endblock %}
 
-{% block greeting %} 
-{% if user.is_authenticated %}
-Welcome to Stack Overflow, {{user.username}}! 
-
-{% else %}
- Welcome to Stack Overflow! 
-{% endif %}
+{% block greeting %}
+  {% if user.is_authenticated %}
+    Welcome to Stack Overflow, {{ user.username }}!
+  {% else %}
+    Welcome to Stack Overflow!
+  {% endif %}
 {% endblock %}
 
 {% block paragraph %} Find answers to your technical questions and help others answer theirs. {% endblock %}
@@ -30,4 +27,6 @@ Welcome to Stack Overflow, {{user.username}}!
 
 {% block question %} Ask Question {% endblock %}
 
-{% block question_container %} {% endblock %}
+{% block homeContainer %}
+  {{ block.super }}
+{% endblock %}
